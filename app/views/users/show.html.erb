@@ -1,7 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h><%= @user.first_name %></h>
-<h><%= @user.last_name %></h>
+<h><%= @user.first_name + " " + @user.last_name %></h></br>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<table>
+  <tr>
+    <th>Stats</th>
+  </tr>
+	<% @user.stats.each do |stat| %>
+	  <tr>
+	    <td><%= stat.lift %></td>
+	    <td><%= stat.pounds %></td>
+	    <td><%= stat.reps %></td>
+	    <td><%= link_to 'Edit', edit_stat_path(stat) %></td>
+	    <td><%= link_to 'Show', stat_path(stat) %></td>
+	    <td><%= link_to 'Delete', stat_path(stat), method: :delete, data: {confirm: 'are you sure?' } %></td>
+	  </tr>
+	<% end %> 
+
+</table>
+
+</br>
+
+<%= link_to "+ Stats", new_stat_path(:user_info => { :user_id => @user.id }) %>
+
 <%= link_to 'Back', users_path %>

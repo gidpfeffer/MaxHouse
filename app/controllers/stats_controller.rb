@@ -14,7 +14,7 @@ class StatsController < ApplicationController
 
   # GET /stats/new
   def new
-    @stat = Stat.new
+    @stat = Stat.new(new_stat_params)
   end
 
   # GET /stats/1/edit
@@ -28,8 +28,8 @@ class StatsController < ApplicationController
 
     respond_to do |format|
       if @stat.save
-        format.html { redirect_to @stat, notice: 'Stat was successfully created.' }
-        format.json { render :show, status: :created, location: @stat }
+        format.html { redirect_to user_path(@stat.user_id), notice: "Successfully created stat" }
+        format.json { render :users, status: :created, location: @stat }
       else
         format.html { render :new }
         format.json { render json: @stat.errors, status: :unprocessable_entity }
@@ -69,6 +69,10 @@ class StatsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stat_params
-      params.fetch(:stat, {})
+      params.require(:stat).permit(:user_id, :lift, :reps, :pounds)
+    end
+
+    def new_stat_params
+      params.require(:user_info).permit(:user_id)
     end
 end
