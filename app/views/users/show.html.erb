@@ -1,10 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h><%= @user.first_name + " " + @user.last_name %></h></br>
+<h1><%= @user.first_name + " " + @user.last_name  + " Stats" %></h1>
 
 <table>
   <tr>
-    <th>Stats</th>
+    <th>Lift</th>
+    <th>Pounds</th>
+    <th>Reps</th>
   </tr>
 	<% @user.stats.each do |stat| %>
 	  <tr>

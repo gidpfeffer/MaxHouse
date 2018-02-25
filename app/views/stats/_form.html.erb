@@ -9,7 +9,7 @@
 <%= form_for @stat do |f| %>
   <p>
     <%= f.label :lift %><br>
-    <%= f.text_field :lift %>
+    <%= f.select :lift, ['Bench', 'Decline Bench', 'Incline Bench', 'Squat', 'Deadlift', 'Clean', 'Overhead Press', 'Curl']%>
   </p>
 
   <p>

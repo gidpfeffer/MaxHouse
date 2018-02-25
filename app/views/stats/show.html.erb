@@ -1,4 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @stat.user.first_name  + " " + @stat.user.last_name %></h1>
+
+<h2><%= @stat.lift %></h2>
+
+<h3><%= "Reps: " + @stat.reps.to_s %></h3>
+<h3><%= "Pounds: " + @stat.pounds.to_s %></h3>
+
 <%= link_to 'Edit', edit_stat_path(@stat) %> |
-<%= link_to 'Back', stats_path %>
+<%= link_to 'Back', users_path %>

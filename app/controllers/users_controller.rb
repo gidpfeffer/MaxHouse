@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @admins = User.where(admin: true)
+    @plebs = User.where(admin: false)
   end
 
   # GET /users/1
@@ -25,6 +26,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    @user.admin = false
 
     respond_to do |format|
       if @user.save
